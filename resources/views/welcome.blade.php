@@ -83,9 +83,10 @@
         @endif
 
         <div class="content">
-            <div class="title m-b-md">
-                EasyHome - Sua Casa Inteligente
+            <div class="title m-b-sm">
+                EasyHome
             </div>
+            <h5>Sua Casa Inteligente</h5>
         </div>
     </div>
 </body>

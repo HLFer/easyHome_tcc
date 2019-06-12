@@ -1,46 +1,28 @@
 <?php
+//Definição das rotas do Framework EasyHome
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+//Grupo de rotas para os comodos das casa
 Route::group(['prefix' => '/'], function () {
     Route::get('/living_room', 'LivingRoomController@index')->name('living_room');
-    //Route::get('/cozinha', 'CozinhaController@index')->name('cozinha');
-    //Route::get('/banheiro', 'BanheiroController@index')->name('banheiro');
-    //Route::get('/quarto', 'QuartoController@index')->name('quarto');
-    //Route::get('/garagem', 'GaragemController@index')->name('garagem');
-    //Route::get('/lavanderia', 'LavanderiaController@index')->name('lavanderia');
-    //Route::get('/jardim', 'JardimController@index')->name('jardim');
+    Route::get('/kitchen', 'KitchenController@index')->name('kitchen');
+    Route::get('/bathroom', 'BathroomController@index')->name('bathroom');
+    Route::get('/bedroom', 'BedroomController@index')->name('bedroom');
+    Route::get('/garage', 'GarageController@index')->name('garage');
+    Route::get('/laundry', 'LaundryController@index')->name('laundry');
 });
 
-Route::group(['prefix' => '/lights'], function ($convenient) {
-    Route::get( '/on/{convenient}', 'LightsController@turnOnLights');
-    Route::get('/off/{convenient}', 'LightsController@turnOffLights');
-});
-
-Route::group(['prefix' => '/fans'], function ($convenient) {
-    Route::get('/on/{convenient}', 'FansController@turnOnFans');
-    Route::get('/off/{convenient}', 'FansController@turnOffFans');
-});
-
-Route::group(['prefix' => '/televisions'], function ($convenient) {
-    Route::get('/on/{convenient}', 'TelevisionsController@turnOnTelevisions');
-    Route::get('/off/{convenient}', 'TelevisionsController@turnOffTelevisions');
+/*Grupo de rotas que recebem a variavel $convenient 
+* como parametro para acionamento dos dispositivos 
+* nos respecitivos comodos
+*/
+Route::group(['prefix' => '/operation'], function ($convenient) {
+    Route::get('/{convenient}/{param}/{state}', 'OperationsController@index');
 });

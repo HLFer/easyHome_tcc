@@ -1,10 +1,11 @@
 {
-    "name": "laravel/laravel",
+    "name": "EasyHome - Automação Residencial",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "EasyHome - Sua Casa Inteligente",
     "keywords": [
         "framework",
-        "laravel"
+        "laravel",
+        "easyhome"
     ],
     "license": "MIT",
     "require": {

@@ -21,6 +21,7 @@ class LivingRoomController extends Controller
      */
     public function index()
     {
+        //retorna a view da sala para o usuario
         return view('living_room');
     }
 }
