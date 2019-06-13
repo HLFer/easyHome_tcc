@@ -1,12 +1,15 @@
+# coding=utf-8
 import RPi.GPIO as GPIO
 import sys
 
+#Parametros recebidos via argumento
+params = sys.argv[1:]
 #Comodo selecionado
-convenient = sys.argv[2:]
+convenient = params[0]
 #Aparelho eletronico selecionado
-param = sys.argv[3:]
+param = params[1]
 #Estado do aparelho - ligado ou desligado
-state = sys.argv[4:]
+state = params[2]
 
 #Parametrização para os aparelhos eletronicos da sala de estar
 if (convenient == 'living_room'):
@@ -63,7 +66,8 @@ if(state == 'on'):
 #desliga o aparelho na GPIO selecionada
 else:
     GPIO.setmode(GPIO.BCM)
+    GPIO.setwarnings(False)
     GPIO.setup(pin,GPIO.OUT)
     GPIO.output(pin,GPIO.HIGH)
-    GPIO.setwarnings(False)
+    
 
