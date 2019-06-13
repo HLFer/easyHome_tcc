@@ -16,16 +16,15 @@ class Operations extends Model
     public function turnOn($convenient, $param, $state)
     {
         //Executa o script na pasta python - comando para ligar o aparelho selecionado
-        $command = "cd ../script && python commands.py $convenient $param $state";
+        $command = "cd ../scripts && python commands.py $convenient $param $state";
         pclose(popen($command, 'r'));
         return true;
     }
     public function turnOff($convenient, $param, $state)
     {
         //Executa o script na pasta python - comando para desligar o aparelho selecionado
-        $command = "cd ../script && python commands.py $convenient $param $state";
+        $command = "cd ../scripts && python commands.py $convenient $param $state";
         pclose(popen($command, 'r'));
         return true;
     }
-
 }
