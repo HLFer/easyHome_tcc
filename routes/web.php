@@ -19,6 +19,8 @@ Route::group(['prefix' => '/'], function () {
     Route::get('/laundry', 'LaundryController@index')->name('laundry');
 });
 
+Route::get('/config', 'UserConfigurationController@index')->name('config');
+
 /*Grupo de rotas que recebem a variavel $convenient 
 * como parametro para acionamento dos dispositivos 
 * nos respecitivos comodos

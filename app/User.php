@@ -15,6 +15,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+
     protected $fillable = [
         'name', 'email', 'password',
     ];
@@ -36,4 +37,28 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function roles(){
+        return $this->belongsToMany('easyHome\Role', 'user_role', 'user_id', 'role_id');
+    }
+    public function hasAnyRole($roles){
+        if(is_array($roles)){
+            foreach ($roles as $role) {
+                if($this->hasRole($role)){
+                    return true;
+
+                }
+            }
+        }else{
+            if($this->hasRole($roles)){
+                return true;
+            }
+        }
+    }
+    public function hasRole($role){
+        if($this->roles()->where('name', $role)->first()){
+            return true;
+        }
+        return false;
+    }
 }

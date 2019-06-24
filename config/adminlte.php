@@ -111,7 +111,7 @@ return [
         'CONFIGURAÇÕES DA CONTA',
         [
             'text' => 'Perfil de Morador',
-            'url'  => 'admin/settings',
+            'url'  => 'config',
             'icon' => 'user',
         ],
         [
